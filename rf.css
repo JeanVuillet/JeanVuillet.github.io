@@ -1,0 +1,76 @@
+h1{
+    color:chocolate;
+}
+
+main{
+display:flex;
+flex-direction: row;
+
+}
+.Membre {
+    border: solid 4px;
+  border-color: violet;
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+div :first-child{
+    display:flex;
+    flex-direction:row;
+    gap:20px;
+}
+
+div :last-child{
+    
+    DISPLAY:flex;
+    flex-direction: column;
+    color:rgb(25, 12, 14)
+    
+   
+
+}
+
+.enfants button{
+    font-size:30px;
+    padding-left: 25px;
+    text-align: right;
+    color:red;
+}
+.enfants>*{
+
+    border: solid blue 3px;
+
+}
+.enfants p{
+    color:blue;
+}
+
+
+.Membre p{
+    font-size: 20px;
+    font-style: italic;
+    color:orange;
+}
+
+
+.Tree last-child{
+    border:solid blue;
+}
+
+button{
+    margin:2px;
+    width: 70px;
+    text-align:center;
+}
+
+img{
+    width:300px;
+    height:300px;
+}
+    
+   
+
+
+
