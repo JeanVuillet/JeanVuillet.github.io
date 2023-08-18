@@ -5,6 +5,7 @@
 
 const reponse2 = await fetch("rf.json");
 const membres = await reponse2.json();
+let DivNextG ;
 
 
  //trier la liste membres
@@ -156,10 +157,12 @@ console.log("pere=" +pere+"mere="+mere);
 
    for(let i=0;i<Enfants.length;i++){
 
-    const enfants=document.createElement("div");
+    const DivEnfants=document.createElement("div");
+    DivNextG=document.createElement("div");
+
+   
     const NomEnfant=document.createElement("p");
-    const divEnfant=docuemnt.createElement
-    NomEnfant.className ="enfants";
+
     const ImageEnfant=document.createElement("img");
     const DownEnfant=document.createElement("button");
     DownEnfant.addEventListener("click", function (){NexGeneration(Enfants[i].NomMembre, Enfants[i].PrenomMembre);})
@@ -172,13 +175,14 @@ console.log("pere=" +pere+"mere="+mere);
     // el.innerHTML="<img src=\"http://placehold.it/350x350\" width=\"400px\" height=\"150px\">";
 
  
-   enfants.appendChild(ImageEnfant);
-   enfants.appendChild(NomEnfant);
+   DivEnfants.appendChild(ImageEnfant);
+   DivEnfants.appendChild(NomEnfant);
+   DivEnfants.appendChild(DivNextG);
   
     
    NomEnfant.innerText=Enfants[i].PrenomMembre+" "+Enfants[i].NomMembre+" "+Enfants[i].DateNaissance;
 
-    divTreeEnfants.appendChild(enfants);
+    divTreeEnfants.appendChild(DivEnfants);
 
     NomEnfant.appendChild(DownEnfant);
 
@@ -275,6 +279,7 @@ function GetEnfant(nomPere, prenomPere, nomMere, prenomMere) {
      
        })
      return list2;
+     b=2;
 }
 
 function GetConjoint (nom, prenom){
@@ -341,10 +346,10 @@ function NexGeneration(a,b)
  
  let DivDown=document.createElement("div");
 
- let NomEnfant=document.querySelector(".enfants");
+ let NomEnfant=document.querySelector(".NextG");
  
  
- NomEnfant.appendChild(DivDown);
+
 
  if(ObjParent.Sexe="M"){
  NomConjoint.innerText="Mere="+mere[0].NomMembre}
@@ -363,9 +368,9 @@ DivDown.appendChild(NomConjoint);
 }
 
 
+NomEnfant.appendChild(DivDown);
 
-
-
+a=0;
  
 }
- 
+ sqdkhqfs
