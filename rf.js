@@ -370,6 +370,6 @@ DivDown.appendChild(NomConjoint);
 
 NomEnfant.appendChild(DivDown);
 
-a=0;
+
  
 }
