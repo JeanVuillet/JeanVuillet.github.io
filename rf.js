@@ -5,6 +5,7 @@
 
 const reponse2 = await fetch("rf.json");
 const membres = await reponse2.json();
+let DivNextG ;
 
 
  //trier la liste membres
@@ -45,12 +46,12 @@ const divTreeEnfants=document.createElement("div");
 const List=document.querySelector(".List");
 const Tree=document.querySelector(".Tree");
 
-const img= document.createElement("img");
+/*const img= document.createElement("img");
 img.src="photos/JeanVuillet.jpeg", 
 img.alt="photos/JeanVuillet.jpeg";
 
 List.appendChild(img);
-
+*/
 List.appendChild(divList);
 Tree.appendChild(divTree);
 divTree.appendChild(divTreeParents);
@@ -118,9 +119,9 @@ console.log("pere=" +pere+"mere="+mere);
   const PereNom=document.createElement("p");
   const PerePhoto=document.createElement("img");
 
-  PerePhoto.src= "photos/"+ NoAccent(pere[0].PrenomMembre)+NoAccent(pere[0].NomMembre)+".jpeg ";
+  PerePhoto.src= "photos/"+NoAccent(pere[0].PrenomMembre)+NoAccent(pere[0].NomMembre)+".jpeg";
 
-  PerePhoto.alt= "photos/ "+ NoAccent(pere[0].PrenomMembre)+NoAccent(pere[0].NomMembre)+".jpeg ";
+  PerePhoto.alt= "photos/"+NoAccent(pere[0].PrenomMembre)+NoAccent(pere[0].NomMembre)+".jpeg";
    PereNom.innerHTML="";
    console.log(pere.PrenomMembre);
    PereNom.innerText=pere[0].PrenomMembre+" "+pere[0].NomMembre+" "+pere[0].DateNaissance;
@@ -135,7 +136,7 @@ console.log("pere=" +pere+"mere="+mere);
    MerePhoto.className="a";
 
   
-   MerePhoto.src=  "photos/"+NoAccent(mere[0].PrenomMembre)+NoAccent(mere[0].NomMembre)+ ".jpeg";
+   MerePhoto.src="photos/"+NoAccent(mere[0].PrenomMembre)+NoAccent(mere[0].NomMembre)+".jpeg";
    MerePhoto.alt=mere[0].NomMembre+mere[0].PrenomMembre;
    MereNoms.innerText=" ";
    MereNoms.innerText=mere[0].PrenomMembre+" "+mere[0].NomMembre+" "+mere[0].DateNaissance;
@@ -156,13 +157,15 @@ console.log("pere=" +pere+"mere="+mere);
 
    for(let i=0;i<Enfants.length;i++){
 
-    const enfants=document.createElement("div");
+    const DivEnfants=document.createElement("div");
+    DivNextG=document.createElement("div");
+
+   
     const NomEnfant=document.createElement("p");
-    const divEnfant=docuemnt.createElement
-    NomEnfant.className ="enfants";
+
     const ImageEnfant=document.createElement("img");
     const DownEnfant=document.createElement("button");
-    DownEnfant.addEventListener("click", function (){NexGeneration(Enfants[i].NomMembre, Enfants[i].PrenomMembre);})
+    DownEnfant.addEventListener("click", function (){TreeEnfants(Enfants[i].Id);});
     
     DownEnfant.innerText="↓";
  
@@ -172,13 +175,14 @@ console.log("pere=" +pere+"mere="+mere);
     // el.innerHTML="<img src=\"http://placehold.it/350x350\" width=\"400px\" height=\"150px\">";
 
  
-   enfants.appendChild(ImageEnfant);
-   enfants.appendChild(NomEnfant);
+   DivEnfants.appendChild(ImageEnfant);
+   DivEnfants.appendChild(NomEnfant);
+   DivEnfants.appendChild(DivNextG);
   
     
    NomEnfant.innerText=Enfants[i].PrenomMembre+" "+Enfants[i].NomMembre+" "+Enfants[i].DateNaissance;
 
-    divTreeEnfants.appendChild(enfants);
+    divTreeEnfants.appendChild(DivEnfants);
 
     NomEnfant.appendChild(DownEnfant);
 
@@ -275,6 +279,7 @@ function GetEnfant(nomPere, prenomPere, nomMere, prenomMere) {
      
        })
      return list2;
+     b=2;
 }
 
 function GetConjoint (nom, prenom){
@@ -301,71 +306,3 @@ function NoAccent(a) {
   }
   return d;
 }
-
-function NexGeneration(a,b) 
-{
-  
-    let pere= Array();
-    let mere=Array();
-    let enfants=Array();
-
-
-   let ObjParent= GetByName(a,b);
-
-
-
-   if(ObjParent.Sexe=="M")
-   {  
-        pere=ObjParent ;
-            if(pere[0].NomEpoux!=""){mere=GetByName(pere[0].NomEpoux,pere[0].PrenomEpoux);}
-            else{mere=GetConjoint(pere[0].NomMembre,pere[0].PrenomMembre)}
-
-    }
-    else
-    {
-        mere=ObjParent;  
-            if(mere[0].NomEpoux!==""){pere=GetByName(mere[0].NomEpoux,mere[0].PrenomEpoux);}
-            else{pere=GetConjoint(mere[0].NomMembre, mere[0].PrenomMembre)}   
-    }
-
-
-  enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
-               
-    
-   
-
-
-
- //Création elements HTML
- let NomConjoint=document.createElement("p");
- 
- let DivDown=document.createElement("div");
-
- let NomEnfant=document.querySelector(".enfants");
- 
- 
- NomEnfant.appendChild(DivDown);
-
- if(ObjParent.Sexe="M"){
- NomConjoint.innerText="Mere="+mere[0].NomMembre}
- else{NomConjoint.innerText="Pere:"+pere[0].NomMembre}
-;
-
-DivDown.appendChild(NomConjoint);
-
- for(let i=0; i< enfants.length; i++)
- {
- let kids=document.createElement("p");
- kids.className="kids";
- kids.innerText=enfants[i].NomMembre+" "+enfants[i].PrenomMembre;
- DivDown.appendChild(kids);
-
-}
-
-
-
-
-
- 
-}
- 
