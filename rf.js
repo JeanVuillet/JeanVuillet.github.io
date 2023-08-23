@@ -10,7 +10,8 @@ let DivNextG ;
 
 //création des éléments html
 
-
+const divList=document.createElement("div");
+divList.id="divlist";
 
 const divTree=document.createElement("div");
 const divTreeParents=document.createElement("div");
@@ -18,9 +19,12 @@ divTreeParents.className="parents";
 const divTreeEnfants=document.createElement("div");
 divTreeEnfants.className="enfants";
 
+//let QuerryL2=document.querySelector(".List");
 
 
-const List=document.querySelector(".List");
+
+
+
 const Tree=document.querySelector(".Tree");
 
 
@@ -44,8 +48,15 @@ const Tree=document.querySelector(".Tree");
 
 select.appendChild(formulaire);
 
+
+    // EventLIstener recheche
+    button.addEventListener("click", Recherche());
+
 for(let i=0;i< membres.length;i++)
 {
+  const   divlist2=document.getElementById("divlist");
+
+
 //création des éléments de la liste
    let pI=document.createElement("p");
    pI.id="pI";
@@ -61,17 +72,22 @@ for(let i=0;i< membres.length;i++)
     boutonUp.addEventListener("click", function(){TreeParent(membres[i].Id)});
 
     boutonDown.addEventListener("click",function(){TreeEnfants(membres[i].Id)})
+ 
 
-    List.appendChild(pI);
+    const List=document.querySelector(".List");
+   // List.appendChild(pI);
+    List.id="divList";
+
     pI.appendChild(boutonUp);
     pI.appendChild(boutonDown);
+
+    List.appendChild(pI);
 
 
 };
 
 
 
-const a= document.querySelector(".bouton");
 
 
 
@@ -99,18 +115,37 @@ const a= document.querySelector(".bouton");
    
 
      let pListe;
+alert("avant");
 
 
-    // EventLIstener
-button.addEventListener("click", go());
 
-function go()
+alert("après");
+
+
+
+
+
+
+
+
+Tree.appendChild(divTree);
+
+divTree.appendChild(divTreeParents);
+
+divTree.appendChild(divTreeEnfants);
+
+alert("programme fini");
+
+//LES FONCTIONS
+
+function Recherche()
 
 {
-    List.innerHTML="";
-
+   const  querry=document.querySelector(".List");
+   // QuerryL2.innerHTML="";
+querry.innerHTML="";
  
-   
+   /*
    
   let PN= input.value;
  let j=0;
@@ -154,24 +189,10 @@ for(let i=0; i< pListe.length;i++)
         
         p2.appendChild(boutonUp);
         p2.appendChild(boutonDown);
-        List.appendChild(p2);
+        divList.appendChild(p2);
    
-    };}
+    */  };
 
-alert("v");
-
-
-
-
-
-Tree.appendChild(divTree);
-
-divTree.appendChild(divTreeParents);
-
-divTree.appendChild(divTreeEnfants);
-
-
-alert("v2");
 //définir TreeEnfants!!!
 
 function TreeEnfants(id){
@@ -503,5 +524,5 @@ t.innerText="aaaasjmkljsmkljqlmkjflmkjqlmkjdsfqmlkjmqsmqlskjmflkqsjmqlmkjfkdqfls
 
  
 }
-alert("v3");
-List.id="lala";
+
+
