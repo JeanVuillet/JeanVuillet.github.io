@@ -8,60 +8,47 @@ const membres = await reponse2.json();
 let DivNextG ;
 
 
- //trier la liste membres
-
-     
- 
-
-    membres.sort(function compare (a,b){
-     
-    if (a.PrenomMembre < b.PrenomMembre) 
-      {
-         return -1;
-     }
-     else if( a.PrenomMembre > b.PrenomMembre)
-      {
-         return +1;
-     }
-     else {return 0};
-    
- 
- 
-     })
-console.log("membres="+membres);
-const a= document.querySelector(".bouton");
-
-
-
-
 //création des éléments html
 
 
-const divList=document.createElement("div");
+
 const divTree=document.createElement("div");
 const divTreeParents=document.createElement("div");
+divTreeParents.className="parents";
 const divTreeEnfants=document.createElement("div");
+divTreeEnfants.className="enfants";
+
 
 
 const List=document.querySelector(".List");
 const Tree=document.querySelector(".Tree");
 
-const img= document.createElement("img");
-img.src="photos/JeanVuillet.jpeg", 
-img.alt="photos/JeanVuillet.jpeg";
 
-List.appendChild(img);
 
-List.appendChild(divList);
-Tree.appendChild(divTree);
-divTree.appendChild(divTreeParents);
-divTree.appendChild(divTreeEnfants);
+
+    //création formulaire
+     const select=document.querySelector(".formulaire");
+     
+     let formulaire=document.createElement("form");
+     let label=document.createElement("label");
+     label.for="prénom";
+     let input=document.createElement("input");
+     input.type="search";
+     input.id="recheche";
+     let button=document.createElement("button");
+     button.innerText="recheche";
+     
+     formulaire.appendChild(label);
+     formulaire.appendChild(input);
+     formulaire.appendChild(button);
+
+select.appendChild(formulaire);
 
 for(let i=0;i< membres.length;i++)
 {
-
-    //création des éléments de la liste
-   const pI=document.createElement("p");
+//création des éléments de la liste
+   let pI=document.createElement("p");
+   pI.id="pI";
    const boutonUp=document.createElement("button");
    boutonUp.innerHTML="parents";
    const boutonDown=document.createElement("button");
@@ -80,6 +67,111 @@ for(let i=0;i< membres.length;i++)
     pI.appendChild(boutonDown);
 
 
+};
+
+
+
+const a= document.querySelector(".bouton");
+
+
+
+ //trier la liste membres
+
+ membres.sort(function compare (a,b){
+     
+    if (a.PrenomMembre < b.PrenomMembre) 
+      {
+         return -1;
+     }
+     else if( a.PrenomMembre > b.PrenomMembre)
+      {
+         return +1;
+     }
+     else {return 0};
+    
+ 
+ 
+     })
+    
+
+
+
+   
+
+     let pListe;
+
+
+    // EventLIstener
+button.addEventListener("click", go());
+
+function go()
+
+{
+    List.innerHTML="";
+
+ 
+   
+   
+  let PN= input.value;
+ let j=0;
+  pListe= new Array();
+
+ //Creation de pListe
+  for (let i=0; i<membres.length;i++)
+                {
+
+                if(membres[i].PrenomMembre.substring(0,PN.length).toUpperCase()==PN.toUpperCase())
+                {
+                pListe[j]=membres[i];
+                j=j+1
+
+
+                //  e=>e.Id==id
+                
+          
+                }
+                }
+// création du div alternatif
+
+for(let i=0; i< pListe.length;i++)
+    {
+       
+        //création des éléments de la liste
+       const p2=document.createElement("p");
+    const boutonUp=document.createElement("button");
+    boutonUp.innerHTML="parents";
+
+    const boutonDown=document.createElement("button");
+    boutonDown.innerText="enfants";
+
+    
+    
+        p2.innerText=pListe[i].PrenomMembre+" "+pListe[i].NomMembre
+
+        boutonUp.addEventListener("click", function(){TreeParent(membres[i].Id)});
+
+        boutonDown.addEventListener("click",function(){TreeEnfants(membres[i].Id)})
+        
+        p2.appendChild(boutonUp);
+        p2.appendChild(boutonDown);
+        List.appendChild(p2);
+   
+    };}
+
+alert("v");
+
+
+
+
+
+Tree.appendChild(divTree);
+
+divTree.appendChild(divTreeParents);
+
+divTree.appendChild(divTreeEnfants);
+
+
+alert("v2");
 //définir TreeEnfants!!!
 
 function TreeEnfants(id){
@@ -149,7 +241,7 @@ console.log("pere=" +pere+"mere="+mere);
 
 
 
-
+ 
 
    const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
     
@@ -158,14 +250,19 @@ console.log("pere=" +pere+"mere="+mere);
    for(let i=0;i<Enfants.length;i++){
 
     const DivEnfants=document.createElement("div");
-    DivNextG=document.createElement("div");
-
+    DivEnfants.className=i;
    
+    const DivNextG=document.createElement("div");
+    DivNextG.className=i;
+
+   let p=document.createElement("p");
+
     const NomEnfant=document.createElement("p");
 
     const ImageEnfant=document.createElement("img");
     const DownEnfant=document.createElement("button");
-    DownEnfant.addEventListener("click", function (){NexGeneration(Enfants[i].NomMembre, Enfants[i].PrenomMembre);})
+    
+    DownEnfant.addEventListener("click", function (){(NextGeneration(Enfants[i].NomMembre, Enfants[i].PrenomMembre, i));})
     
     DownEnfant.innerText="↓";
  
@@ -174,7 +271,7 @@ console.log("pere=" +pere+"mere="+mere);
 
     // el.innerHTML="<img src=\"http://placehold.it/350x350\" width=\"400px\" height=\"150px\">";
 
- 
+   DivNextG.appendChild(p);
    DivEnfants.appendChild(ImageEnfant);
    DivEnfants.appendChild(NomEnfant);
    DivEnfants.appendChild(DivNextG);
@@ -190,6 +287,7 @@ console.log("pere=" +pere+"mere="+mere);
    
    }
  }
+ 
    
     //ajout des action listeners
 
@@ -199,7 +297,7 @@ console.log("pere=" +pere+"mere="+mere);
 
     
 
-}
+
 
 
 function TreeParent(id){ 
@@ -258,6 +356,7 @@ alert("ID="+id+" "+MembreCourant.Id+" "+MembreCourant.PrenomMembre);
 
 };
 
+
 function GetByName(nom, prenom){
     const list2= membres.filter(e=>e.NomMembre==nom && e.PrenomMembre==prenom);
 
@@ -279,7 +378,6 @@ function GetEnfant(nomPere, prenomPere, nomMere, prenomMere) {
      
        })
      return list2;
-     b=2;
 }
 
 function GetConjoint (nom, prenom){
@@ -307,7 +405,7 @@ function NoAccent(a) {
   return d;
 }
 
-function NexGeneration(a,b) 
+function NextGeneration(a,b,c) 
 {
   
     let pere= Array();
@@ -319,11 +417,15 @@ function NexGeneration(a,b)
 
 
 
-   if(ObjParent.Sexe=="M")
+   if(ObjParent[0].Sexe=="M")
    {  
         pere=ObjParent ;
+
             if(pere[0].NomEpoux!=""){mere=GetByName(pere[0].NomEpoux,pere[0].PrenomEpoux);}
             else{mere=GetConjoint(pere[0].NomMembre,pere[0].PrenomMembre)}
+
+
+        
 
     }
     else
@@ -346,30 +448,60 @@ function NexGeneration(a,b)
  
  let DivDown=document.createElement("div");
 
- let NomEnfant=document.querySelector(".NextG");
+ parent=document.createElement("p");
+let PereMere;
+ if(ObjParent[0].Sexe=="M"){ PereMere="maman="+mere[0].PrenomMembre+" "+mere[0].NomMembre}
+ else{PereMere="papa="+pere[0].PrenomMembre+" "+pere[0].NomMembre}
+ 
+ parent.innerText=PereMere;
+ const va=(c );
+ console.log(va);
+let DivFinal=document.getElementsByClassName(c);
+
+//console.log("querry="+ DivFinal);
+
+const t=document.createElement("p");
+
+t.className="pitie";
+t.innerText="aaaasjmkljsmkljqlmkjflmkjqlmkjdsfqmlkjmqsmqlskjmflkqsjmqlmkjfkdqflsmjfqlkjdfldqsffqsdlksqdflkjsdqfklqklsmjfsqklmjsdlmkjqfdsklmsqjfklmdsjldskjklfdsjmfdqmfsqfsjqfsmjdfsqjfkdmqdfjslksmqfdjmqfsdklmjfsqdjqfsmqdfsfqdqfsdl"
+
+
+
+ DivFinal[0].appendChild(parent);
+
+
+ DivFinal[1].appendChild(t);
+
  
  
 
 
- if(ObjParent.Sexe="M"){
- NomConjoint.innerText="Mere="+mere[0].NomMembre}
- else{NomConjoint.innerText="Pere:"+pere[0].NomMembre}
-;
+ 
 
-DivDown.appendChild(NomConjoint);
+
+
 
  for(let i=0; i< enfants.length; i++)
  {
  let kids=document.createElement("p");
  kids.className="kids";
  kids.innerText=enfants[i].NomMembre+" "+enfants[i].PrenomMembre;
- DivDown.appendChild(kids);
+ //DivFinal.appendChild(kids);
+ DivFinal[0].appendChild(kids);
+
+
 
 }
 
 
-NomEnfant.appendChild(DivDown);
+
+
+
+
+
 
 
  
 }
+alert("v3");
+List.id="lala";
