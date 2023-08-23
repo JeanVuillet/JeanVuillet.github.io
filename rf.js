@@ -5,7 +5,30 @@
 
 const reponse2 = await fetch("rf.json");
 const membres = await reponse2.json();
-let DivNextG ;
+
+//trier tableau membres
+for(let i=0;i< membres.length;i++)
+{
+ 
+ membres.sort(function compare (a,b){
+     
+    if (a.PrenomMembre < b.PrenomMembre) 
+      {
+         return -1;
+     }
+     else if( a.PrenomMembre > b.PrenomMembre)
+      {
+         return +1;
+     }
+     else {return 0};
+    
+     })
+    
+
+    }
+
+
+
 
 
 //création des éléments html
@@ -18,9 +41,6 @@ const divTreeParents=document.createElement("div");
 divTreeParents.className="parents";
 const divTreeEnfants=document.createElement("div");
 divTreeEnfants.className="enfants";
-
-//let QuerryL2=document.querySelector(".List");
-
 
 
 
@@ -44,85 +64,17 @@ const Tree=document.querySelector(".Tree");
      
      formulaire.appendChild(label);
      formulaire.appendChild(input);
+         // EventLIstener recheche
+    button.addEventListener("click", function(){Recherche()} );
+    alert("ok");
      formulaire.appendChild(button);
 
-select.appendChild(formulaire);
-
-
-    // EventLIstener recheche
-    button.addEventListener("click", Recherche());
-
-for(let i=0;i< membres.length;i++)
-{
-  const   divlist2=document.getElementById("divlist");
-
-
-//création des éléments de la liste
-   let pI=document.createElement("p");
-   pI.id="pI";
-   const boutonUp=document.createElement("button");
-   boutonUp.innerHTML="parents";
-   const boutonDown=document.createElement("button");
-   boutonDown.innerText="enfants";
-
-  
-   
-    pI.innerText=membres[i].PrenomMembre+" "+membres[i].NomMembre
-
-    boutonUp.addEventListener("click", function(){TreeParent(membres[i].Id)});
-
-    boutonDown.addEventListener("click",function(){TreeEnfants(membres[i].Id)})
- 
-
-    const List=document.querySelector(".List");
-   // List.appendChild(pI);
-    List.id="divList";
-
-    pI.appendChild(boutonUp);
-    pI.appendChild(boutonDown);
-
-    List.appendChild(pI);
-
-
-};
+       select.appendChild(formulaire);
 
 
 
 
-
-
- //trier la liste membres
-
- membres.sort(function compare (a,b){
      
-    if (a.PrenomMembre < b.PrenomMembre) 
-      {
-         return -1;
-     }
-     else if( a.PrenomMembre > b.PrenomMembre)
-      {
-         return +1;
-     }
-     else {return 0};
-    
- 
- 
-     })
-    
-
-
-
-   
-
-     let pListe;
-alert("avant");
-
-
-
-alert("après");
-
-
-
 
 
 
@@ -136,25 +88,30 @@ divTree.appendChild(divTreeEnfants);
 
 alert("programme fini");
 
+const  List=document.querySelector(".List");
+const div= document.createElement("div");
+List.appendChild(div);
+
 //LES FONCTIONS
+
 
 function Recherche()
 
 {
-   const  querry=document.querySelector(".List");
-   // QuerryL2.innerHTML="";
-querry.innerHTML="";
+
+   
+//querry.innerHTML="";
  
-   /*
+   
    
   let PN= input.value;
  let j=0;
-  pListe= new Array();
+ let pListe= new Array();
 
  //Creation de pListe
   for (let i=0; i<membres.length;i++)
                 {
-
+                 
                 if(membres[i].PrenomMembre.substring(0,PN.length).toUpperCase()==PN.toUpperCase())
                 {
                 pListe[j]=membres[i];
@@ -162,36 +119,33 @@ querry.innerHTML="";
 
 
                 //  e=>e.Id==id
-                
-          
-                }
-                }
-// création du div alternatif
+                 //création des éléments de la liste
 
-for(let i=0; i< pListe.length;i++)
-    {
-       
-        //création des éléments de la liste
+ 
+
        const p2=document.createElement("p");
-    const boutonUp=document.createElement("button");
-    boutonUp.innerHTML="parents";
-
-    const boutonDown=document.createElement("button");
-    boutonDown.innerText="enfants";
-
-    
-    
-        p2.innerText=pListe[i].PrenomMembre+" "+pListe[i].NomMembre
-
-        boutonUp.addEventListener("click", function(){TreeParent(membres[i].Id)});
-
-        boutonDown.addEventListener("click",function(){TreeEnfants(membres[i].Id)})
-        
-        p2.appendChild(boutonUp);
-        p2.appendChild(boutonDown);
-        divList.appendChild(p2);
+       const boutonUp=document.createElement("button");
+       boutonUp.innerHTML="parents";
    
-    */  };
+       const boutonDown=document.createElement("button");
+       boutonDown.innerText="enfants";
+   
+       
+       
+           p2.innerText=membres[i].PrenomMembre+" "+membres[i].NomMembre
+   
+           boutonUp.addEventListener("click", function(){TreeParent(membres[i].Id)});
+   
+           boutonDown.addEventListener("click",function(){TreeEnfants(membres[i].Id)})
+           
+           p2.appendChild(boutonUp);
+           p2.appendChild(boutonDown);
+           div.appendChild(p2);
+          alert("137" +membres[i].PrenomMembre)
+                }
+                }
+
+            }
 
 //définir TreeEnfants!!!
 
@@ -321,7 +275,8 @@ console.log("pere=" +pere+"mere="+mere);
 
 
 
-function TreeParent(id){ 
+function TreeParent(id)
+{ 
 
     divTreeParents.innerHTML="";
     divTreeEnfants.innerHTML="";
@@ -425,104 +380,4 @@ function NoAccent(a) {
   }
   return d;
 }
-
-function NextGeneration(a,b,c) 
-{
-  
-    let pere= Array();
-    let mere=Array();
-    let enfants=Array();
-
-
-   let ObjParent= GetByName(a,b);
-
-
-
-   if(ObjParent[0].Sexe=="M")
-   {  
-        pere=ObjParent ;
-
-            if(pere[0].NomEpoux!=""){mere=GetByName(pere[0].NomEpoux,pere[0].PrenomEpoux);}
-            else{mere=GetConjoint(pere[0].NomMembre,pere[0].PrenomMembre)}
-
-
-        
-
-    }
-    else
-    {
-        mere=ObjParent;  
-            if(mere[0].NomEpoux!==""){pere=GetByName(mere[0].NomEpoux,mere[0].PrenomEpoux);}
-            else{pere=GetConjoint(mere[0].NomMembre, mere[0].PrenomMembre)}   
-    }
-
-
-  enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
-               
-    
-   
-
-
-
- //Création elements HTML
- let NomConjoint=document.createElement("p");
- 
- let DivDown=document.createElement("div");
-
- parent=document.createElement("p");
-let PereMere;
- if(ObjParent[0].Sexe=="M"){ PereMere="maman="+mere[0].PrenomMembre+" "+mere[0].NomMembre}
- else{PereMere="papa="+pere[0].PrenomMembre+" "+pere[0].NomMembre}
- 
- parent.innerText=PereMere;
- const va=(c );
- console.log(va);
-let DivFinal=document.getElementsByClassName(c);
-
-//console.log("querry="+ DivFinal);
-
-const t=document.createElement("p");
-
-t.className="pitie";
-t.innerText="aaaasjmkljsmkljqlmkjflmkjqlmkjdsfqmlkjmqsmqlskjmflkqsjmqlmkjfkdqflsmjfqlkjdfldqsffqsdlksqdflkjsdqfklqklsmjfsqklmjsdlmkjqfdsklmsqjfklmdsjldskjklfdsjmfdqmfsqfsjqfsmjdfsqjfkdmqdfjslksmqfdjmqfsdklmjfsqdjqfsmqdfsfqdqfsdl"
-
-
-
- DivFinal[0].appendChild(parent);
-
-
- DivFinal[1].appendChild(t);
-
- 
- 
-
-
- 
-
-
-
-
- for(let i=0; i< enfants.length; i++)
- {
- let kids=document.createElement("p");
- kids.className="kids";
- kids.innerText=enfants[i].NomMembre+" "+enfants[i].PrenomMembre;
- //DivFinal.appendChild(kids);
- DivFinal[0].appendChild(kids);
-
-
-
-}
-
-
-
-
-
-
-
-
-
- 
-}
-
 
