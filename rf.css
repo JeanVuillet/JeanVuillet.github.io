@@ -7,70 +7,62 @@ display:flex;
 flex-direction: row;
 
 }
-.Membre {
-    border: solid 4px;
-  border-color: violet;
-    display:flex;
-    flex-direction: column;
+
+#container {
+	background-color: lightgrey;
+	width: 200px;
+	border: 15px solid green;
+	padding: 50px;
+	margin: 20px;
+	
 }
-
-
-
-div :first-child{
-    display:flex;
-    flex-direction:row;
-    gap:20px;
-}
-
-div :last-child{
-    
-    DISPLAY:flex;
-    flex-direction: column;
-    color:rgb(25, 12, 14)
-    
-   
-
-}
-
-.enfants button{
-    font-size:30px;
-    padding-left: 25px;
-    text-align: right;
-    color:red;
-}
-.enfants>*{
-
-    border: solid blue 3px;
-
-}
-.enfants p{
-    color:blue;
-}
-
-
-.Membre p{
-    font-size: 20px;
-    font-style: italic;
-    color:orange;
-}
-
-
-.Tree last-child{
-    border:solid blue;
-}
-
 button{
     margin:2px;
     width: 70px;
     text-align:center;
+}  
+.Tree {
+	flex: 1;
+	margin: 8px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 4px;
 }
-
-img{
-    width:300px;
-    height:300px;
+.Tree membre {
+	flex: 1;
+	display: flex;
+	border: 1px solid black;
+	padding: 4px;
+	background-color: lightgrey;
+	border-radius: 12px;
+	width: 300px;
+	height: 150px;
 }
-    
-   
+.Tree membre img {
+	display: block;
+	
+	margin-left: 20px;
+	width: 150px;
+	object-fit: contain;
+}
+.Tree membre containerElement {
+	width: 100px;
+	border: 3px solid black;
+	padding: 10px;
+	margin: 10px;
+	
+}
+.Tree membre p {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.Tree membre h4 {
+	text-align: center;
+}   
+.Tree membre button {
+	text-align: center;
+	width: 60px;
+}  
 
 
 

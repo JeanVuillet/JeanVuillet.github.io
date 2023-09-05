@@ -1,19 +1,11 @@
-
-
-
-
+// Programme pour afficher la généalogie d'une famille décrite dans une base Json
 
 const reponse2 = await fetch("rf.json");
 const membres = await reponse2.json();
-let DivNextG ;
-
 
  //trier la liste membres
 
-     
- 
-
-    membres.sort(function compare (a,b){
+ membres.sort(function compare (a,b){
      
     if (a.PrenomMembre < b.PrenomMembre) 
       {
@@ -24,238 +16,181 @@ let DivNextG ;
          return +1;
      }
      else {return 0};
-    
- 
- 
      })
-console.log("membres="+membres);
-const a= document.querySelector(".bouton");
 
+const List=document.querySelector(".List");   
+// créer les boutons parents enfants
 
+const UpParents=document.createElement("button");
+// UpParents.addEventListener("click", function (){TreeEnfants(Enfants[i].Id);});
+UpParents.addEventListener("click", function(){TreeParents(document.getElementById("membre").value)});
+UpParents.innerText="Parents";
+const DownEnfants=document.createElement("button");
+DownEnfants.addEventListener("click", function (){TreeEnfants(document.getElementById("membre").value)});
+DownEnfants.innerText="Enfants";
 
+// Saisie du choix du membre avec une liste déroulante
 
+     var select = document.createElement("select");
+     select.name = "membre";
+    select.id = "membre"
+    for(let i=0;i< membres.length;i++)
+    {
+        var option = document.createElement("option");
+         option.value = membres[i].Id;
+         option.text = membres[i].PrenomMembre+" "+membres[i].NomMembre;
+         select.appendChild(option);
+    }
+
+    var label = document.createElement("label");
+    label.innerHTML = "Choisir un membre de la famille "
+    label.htmlFor = "membre";
+ 
+    document.getElementById("container").appendChild(label).appendChild(select);
+    document.getElementById("container").appendChild(UpParents);
+    document.getElementById("container").appendChild(DownEnfants);
+   
 //création des éléments html
 
-
-const divList=document.createElement("div");
-const divTree=document.createElement("div");
-const divTreeParents=document.createElement("div");
-const divTreeEnfants=document.createElement("div");
-
-
-const List=document.querySelector(".List");
-const Tree=document.querySelector(".Tree");
-
-/*const img= document.createElement("img");
-img.src="photos/JeanVuillet.jpeg", 
-img.alt="photos/JeanVuillet.jpeg";
-
-List.appendChild(img);
-*/
-List.appendChild(divList);
-Tree.appendChild(divTree);
-divTree.appendChild(divTreeParents);
-divTree.appendChild(divTreeEnfants);
-
-for(let i=0;i< membres.length;i++)
-{
-
-    //création des éléments de la liste
-   const pI=document.createElement("p");
-   const boutonUp=document.createElement("button");
-   boutonUp.innerHTML="parents";
-   const boutonDown=document.createElement("button");
-   boutonDown.innerText="enfants";
-
-  
-   
-    pI.innerText=membres[i].PrenomMembre+" "+membres[i].NomMembre
-
-    boutonUp.addEventListener("click", function(){TreeParent(membres[i].Id)});
-
-    boutonDown.addEventListener("click",function(){TreeEnfants(membres[i].Id)})
-
-    List.appendChild(pI);
-    pI.appendChild(boutonUp);
-    pI.appendChild(boutonDown);
 
 
 //définir TreeEnfants!!!
 
 function TreeEnfants(id){
-
-    divTreeParents.innerHTML="";
-    divTreeEnfants.innerHTML="";
+  const Tree=document.querySelector(".Tree");
+    Tree.innerHTML="";
 
     let MembreCourant= GetByID(id)[0];
-    alert("ID="+id+" "+MembreCourant.Id+" "+MembreCourant.PrenomMembre);
-
-
+  
     let pere= new Array();
     
      let mere= new Array();
   
     if(MembreCourant.Sexe=="M"){
         pere[0]=  MembreCourant;
-     console.log(pere[0]+" "+MembreCourant);
+   
     if(MembreCourant.NomEpoux==""){
     mere= GetConjoint(MembreCourant.NomMembre,MembreCourant.PrenomMembre);}
    else{   mere= GetByName(MembreCourant.NomEpoux, MembreCourant.PrenomEpoux)}
     }
-
-
-
     else{
         mere[0]=MembreCourant;
     
         if(MembreCourant.NomEpoux==""){
               pere= GetConjoint(MembreCourant.NomMembre,MembreCourant.PrenomMembre);}
             else{  pere= GetByName(MembreCourant.NomEpoux, MembreCourant.PrenomEpoux)}
-
     }
-console.log("pere=" +pere+"mere="+mere);
-  const Pere=document.createElement("div");
-  Pere.className="Membre";
-  const PereNom=document.createElement("p");
-  const PerePhoto=document.createElement("img");
 
-  PerePhoto.src= "photos/"+NoAccent(pere[0].PrenomMembre)+NoAccent(pere[0].NomMembre)+".jpeg";
+    if (pere.length=1)
+    {
+      for(let j=0;j<mere.length;j++)
+      {
+        AfficherMembre(pere[0].Id,"P");
+        AfficherMembre(mere[j].Id,"P");
 
-  PerePhoto.alt= "photos/"+NoAccent(pere[0].PrenomMembre)+NoAccent(pere[0].NomMembre)+".jpeg";
-   PereNom.innerHTML="";
-   console.log(pere.PrenomMembre);
-   PereNom.innerText=pere[0].PrenomMembre+" "+pere[0].NomMembre+" "+pere[0].DateNaissance;
-   
-   Pere.appendChild(PerePhoto);
-   Pere.appendChild(PereNom);
-  
-   const Mere=document.createElement("div");
-   Mere.className="Membre";
-   const MereNoms=document.createElement("p");
-   const MerePhoto=document.createElement("img");
-   MerePhoto.className="a";
-
-  
-   MerePhoto.src="photos/"+NoAccent(mere[0].PrenomMembre)+NoAccent(mere[0].NomMembre)+".jpeg";
-   MerePhoto.alt=mere[0].NomMembre+mere[0].PrenomMembre;
-   MereNoms.innerText=" ";
-   MereNoms.innerText=mere[0].PrenomMembre+" "+mere[0].NomMembre+" "+mere[0].DateNaissance;
-   divTreeParents.innerHTML="";
-   Mere.appendChild(MerePhoto);
-   Mere.appendChild(MereNoms);
-
-   divTreeParents.appendChild(Pere);
-   divTreeParents.appendChild(Mere);
-
-
-
-
-
-   const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
+        const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[j].NomMembre,mere[j].PrenomMembre);
     
-   divTreeEnfants.innerHTML="";
 
-   for(let i=0;i<Enfants.length;i++){
+        for(let i=0;i<Enfants.length;i++)
+        {
+          AfficherMembre(Enfants[i].Id,"E")
+        }
+      }
+    }
+      else
+      {
+        for(let j=0;j<pere.length;j++)
+        {
+          AfficherMembre(pere[j].Id,"P");
+          AfficherMembre(mere[0].Id,"P");
 
-    const DivEnfants=document.createElement("div");
-    DivNextG=document.createElement("div");
-
-   
-    const NomEnfant=document.createElement("p");
-
-    const ImageEnfant=document.createElement("img");
-    const DownEnfant=document.createElement("button");
-    DownEnfant.addEventListener("click", function (){TreeEnfants(Enfants[i].Id);});
+          const Enfants= GetEnfant(pere[j].NomMembre,pere[j].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
     
-    DownEnfant.innerText="↓";
- 
-   ImageEnfant.src="photos/"+NoAccent(Enfants[i].PrenomMembre)+NoAccent(Enfants[i].NomMembre)+".jpeg";
-   ImageEnfant.alt=Enfants[i].PrenomMembre+Enfants[i].NomMembre
 
-    // el.innerHTML="<img src=\"http://placehold.it/350x350\" width=\"400px\" height=\"150px\">";
-
- 
-   DivEnfants.appendChild(ImageEnfant);
-   DivEnfants.appendChild(NomEnfant);
-   DivEnfants.appendChild(DivNextG);
-  
-    
-   NomEnfant.innerText=Enfants[i].PrenomMembre+" "+Enfants[i].NomMembre+" "+Enfants[i].DateNaissance;
-
-    divTreeEnfants.appendChild(DivEnfants);
-
-    NomEnfant.appendChild(DownEnfant);
+          for(let i=0;i<Enfants.length;i++)
+          {
+          AfficherMembre(Enfants[i].Id,"E")
+         }
 
 
-   
-   }
+         }
+
+      }
+
  }
    
     //ajout des action listeners
 
     //boutonUp.addEventListener("click", TreeParent());
 
+    function AfficherMembre(id,type){
+    
+        
+          const membre = GetByID(id);
+          // Récupération de l'élément du DOM qui accueillera la famille
+          const sectionFamille = document.querySelector(".Tree");
+          // Création d’une balise dédiée à un membre
+          const membreElement = document.createElement("membre");
+          // Création des balises 
+          const imageElement = document.createElement("img");
+          imageElement.src ="photos/"+NoAccent(membre[0].PrenomMembre)+NoAccent(membre[0].NomMembre)+".jpeg"
+          imageElement.alt="pas de photo";
+          const containerElement = document.createElement("div");
+          containerElement.className="containerElement";
+          const prenomnomElement = document.createElement("h4");
+          prenomnomElement.innerText = membre[0].PrenomMembre+" "+membre[0].NomMembre;
+          const ddnElement = document.createElement("h4");
+          ddnElement.innerText = membre[0].DateNaissance;
+          // créer les boutons parents enfants
 
+          const bouton=document.createElement("button");
+          if(type=="P")
+            {
+            bouton.addEventListener("click", function(){TreeParents(id)});
+            bouton.innerText="Parents";}
+            else
+            {
+              bouton.addEventListener("click", function(){TreeEnfants(id)});
+            bouton.innerText="Enfants";}
+            
+
+          
+          // On rattache la balise membre a la section Famille
+          sectionFamille.appendChild(membreElement);
+          // On rattache les données à membreElement (la balise membre)
+          membreElement.appendChild(imageElement);
+          membreElement.appendChild(containerElement);
+          containerElement.appendChild(prenomnomElement);
+          containerElement.appendChild(ddnElement);
+          containerElement.appendChild(bouton);
+          
+       }
+  
 
     
 
-}
 
 
-function TreeParent(id){ 
 
-    divTreeParents.innerHTML="";
-    divTreeEnfants.innerHTML="";
+function TreeParents(id){ 
 
-    //divTree.innerHTML="";
+  const Tree=document.querySelector(".Tree");
+  Tree.innerHTML="";
 
      let MembreCourant= GetByID(id)[0];
-alert("ID="+id+" "+MembreCourant.Id+" "+MembreCourant.PrenomMembre);
-    const Tree=document.querySelector(".Tree");
-
-    const Pere=document.createElement("p");
-
-   
-    
-
-
-    if(MembreCourant.NomPere==""){alert("pas de père"); return false;}
-    if(MembreCourant.NomMere==""){alert("pas de mère"); return false;}
-    const Papa=  GetByName(MembreCourant.NomPere,MembreCourant.PrenomPere)
-    console.log(Papa );
-
-    const Maman= GetByName(MembreCourant.NomMere,MembreCourant.PrenomMere)
-
-    const Enfants= GetEnfant(Papa[0].NomMembre, Papa[0].PrenomMembre, Maman[0].NomMembre, Maman[0].PrenomMembre)
-
-
-    console.log(Maman);
-
-    console.log(Enfants);
-    Pere.innerHTML="";
-    Pere.innerText=Papa[0].PrenomMembre+" "+Papa[0].NomMembre+" "+Papa[0].DateNaissance;
-
-    const Mere=document.createElement("p");
-    Mere.innerText=" ";
-    Mere.innerText=Maman[0].PrenomMembre+" "+Maman[0].NomMembre+" "+Maman[0].DateNaissance;
-    divTreeParents.innerHTML="";
-    divTreeParents.appendChild(Pere);
-    divTreeParents.appendChild(Mere)
-   
    
 
-   for(let i=0;i<Enfants.length;i++){
+    if(MembreCourant.NomPere==""){alert("Le nom du père de "+MembreCourant.PrenomMembre+" n'est pas dans le fichier"); return false;}
+    if(MembreCourant.NomMere==""){alert("Le nom de la mère de "+MembreCourant.PrenomMembre+" n'est pas dans le fichier"); return false;}
+    const pere=  GetByName(MembreCourant.NomPere,MembreCourant.PrenomPere)
+    const mere= GetByName(MembreCourant.NomMere,MembreCourant.PrenomMere)
+    AfficherMembre(pere[0].Id,"P");
+    AfficherMembre(mere[0].Id),"P";
 
-    const enfants=document.createElement("p");
-  
-   
-    enfants.innerText=Enfants[i].PrenomMembre+" "+Enfants[i].NomMembre+" "+Enfants[i].DateNaissance;
-    divTreeEnfants.appendChild(enfants);
-   }
-   
-
-   
-
+    const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
+    for(let i=0;i<Enfants.length;i++){
+      AfficherMembre(Enfants[i].Id,"E")
+     }
 };
 
 function GetByName(nom, prenom){
