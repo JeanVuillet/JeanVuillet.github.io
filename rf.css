@@ -43,7 +43,7 @@ button{
 	
 	margin-left: 20px;
 	width: 150px;
-	object-fit: contain;
+	object-fit: cover;
 }
 .Tree membre containerElement {
 	width: 100px;
