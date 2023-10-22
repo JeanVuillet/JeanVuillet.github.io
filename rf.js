@@ -87,6 +87,7 @@ function TreeEnfants(id){
       {
         AfficherMembre(pere[0].Id,"P");
         AfficherMembre(mere[j].Id,"P");
+<<<<<<< HEAD
 
         const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[j].NomMembre,mere[j].PrenomMembre);
     
@@ -107,6 +108,29 @@ function TreeEnfants(id){
           const Enfants= GetEnfant(pere[j].NomMembre,pere[j].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
     
 
+=======
+    
+
+        const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[j].NomMembre,mere[j].PrenomMembre);
+    
+
+        for(let i=0;i<Enfants.length;i++)
+        {
+          AfficherMembre(Enfants[i].Id,"E")
+        }
+      }
+    }
+      else
+      {
+        for(let j=0;j<pere.length;j++)
+        {
+          AfficherMembre(pere[j].Id,"P");
+          AfficherMembre(mere[0].Id,"P");
+
+          const Enfants= GetEnfant(pere[j].NomMembre,pere[j].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
+    
+
+>>>>>>> didier
           for(let i=0;i<Enfants.length;i++)
           {
           AfficherMembre(Enfants[i].Id,"E")
@@ -141,6 +165,13 @@ function TreeEnfants(id){
           prenomnomElement.innerText = membre[0].PrenomMembre+" "+membre[0].NomMembre;
           const ddnElement = document.createElement("h4");
           ddnElement.innerText = membre[0].DateNaissance;
+<<<<<<< HEAD
+=======
+          const ageElement = document.createElement("h4");
+          if(membre[0].DateDeces==""){
+          ageElement.innerText = CalculAge(membre[0].DateNaissance)+" ans";
+          }
+>>>>>>> didier
           // créer les boutons parents enfants
 
           const bouton=document.createElement("button");
@@ -162,6 +193,10 @@ function TreeEnfants(id){
           membreElement.appendChild(containerElement);
           containerElement.appendChild(prenomnomElement);
           containerElement.appendChild(ddnElement);
+<<<<<<< HEAD
+=======
+          containerElement.appendChild(ageElement);
+>>>>>>> didier
           containerElement.appendChild(bouton);
           
        }
@@ -185,7 +220,11 @@ function TreeParents(id){
     const pere=  GetByName(MembreCourant.NomPere,MembreCourant.PrenomPere)
     const mere= GetByName(MembreCourant.NomMere,MembreCourant.PrenomMere)
     AfficherMembre(pere[0].Id,"P");
+<<<<<<< HEAD
     AfficherMembre(mere[0].Id),"P";
+=======
+    AfficherMembre(mere[0].Id,"P");
+>>>>>>> didier
 
     const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
     for(let i=0;i<Enfants.length;i++){
@@ -202,8 +241,9 @@ function GetByName(nom, prenom){
 
 
 function GetEnfant(nomPere, prenomPere, nomMere, prenomMere) {
-
+   
     const list2= membres.filter(e=>e.NomPere==nomPere && e.PrenomPere==prenomPere && e.NomMere==nomMere && e.PrenomMere==prenomMere);
+  
     list2.sort( function ( a,b) { 
        
        const retour=a.DateNaissance.slice(6) - b.DateNaissance.slice(6);
@@ -219,9 +259,8 @@ function GetEnfant(nomPere, prenomPere, nomMere, prenomMere) {
 
 function GetConjoint (nom, prenom){
 
-    console.log(nom,prenom);
+   
     const list2= membres.filter(e=>e.NomEpoux==nom && e.PrenomEpoux==prenom);
-    console.log(list2);
     return list2;
 }
 
@@ -229,7 +268,20 @@ function GetByID(id){
     const list2= membres.filter(e=>e.Id==id);
     return list2;
                     }
-
+ function CalculAge(DateNaissance){
+    var ladate=new Date();
+    var datedujour= new String;
+    datedujour=ladate.toLocaleDateString();
+   
+    var moisjourtoday= new Number;
+      moisjourtoday=parseInt(datedujour.substring(3,5)+datedujour.substring(0,2))
+      var moisjournaissance=new Number;
+      moisjournaissance= parseInt(DateNaissance.substr(3,2)+DateNaissance.substr(0,2));
+     var Age= ladate.getFullYear()-DateNaissance.substr(6,4);
+     if(moisjourtoday<moisjournaissance){
+     Age--;}
+     return Age;
+                     }
 
 function NoAccent(a) {
   var b="áàâäãåçéèêëíïîìñóòôöõúùûüýÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ",
@@ -240,4 +292,8 @@ function NoAccent(a) {
     d += (b.indexOf(e) !== -1) ? c.substr(b.indexOf(e), 1) : e;
   }
   return d;
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> didier
