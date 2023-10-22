@@ -13,7 +13,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "28/07/1900",
-    "DateDeces": "",
+    "DateDeces": "10/09/1975",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -31,7 +31,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "12/01/1909",
-    "DateDeces": "",
+    "DateDeces": "10/03/2005",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -337,7 +337,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "31-01-1946",
-    "DateDeces": "",
+    "DateDeces": "05/12/2019",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -352,7 +352,7 @@
     "PrenomMere": "",
     "NomEpoux": "Vuillet",
     "PrenomEpoux": "Bruno",
-    "DateMariage": 1966,
+    "DateMariage": "1966",
     "DateDivorce": "",
     "DateNaissance": "27-05-1948",
     "DateDeces": "",
@@ -787,7 +787,7 @@
     "DateMariage": "29-04-1967",
     "DateDivorce": "",
     "DateNaissance": "06-01-1931",
-    "DateDeces": "",
+    "DateDeces": "15/02/2021",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -1000,7 +1000,7 @@
     "PrenomMere": "",
     "NomEpoux": "Chapouton",
     "PrenomEpoux": "Catherine",
-    "DateMariage": 2007,
+    "DateMariage": "2007",
     "DateDivorce": "",
     "DateNaissance": "19-06-1972",
     "DateDeces": "",
@@ -1273,7 +1273,7 @@
     "DateMariage": "01-12-1990",
     "DateDivorce": "",
     "DateNaissance": "07-09-1934",
-    "DateDeces": "",
+    "DateDeces": "17/01/2020",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2173,7 +2173,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "27-04-1862",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2191,13 +2191,13 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "10-04-1876",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
   {
     "Id": 122,
-    "NomMembre": "Vuillet",
+    "NomMembre": "Vuillet ",
     "PrenomMembre": "Joseph-Emmanuel",
     "Sexe": "M",
     "NomPere": "",
@@ -2209,7 +2209,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "04-07-1817",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2227,7 +2227,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2245,14 +2245,14 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
   {
     "Id": 125,
     "NomMembre": "Mille",
-    "PrenomMembre": "Emerance",
+    "PrenomMembre": "Emerance ",
     "Sexe": "F",
     "NomPere": "",
     "PrenomPere": "",
@@ -2263,7 +2263,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2271,7 +2271,7 @@
     "Id": 126,
     "NomMembre": "Fischer",
     "PrenomMembre": "Léon",
-    "Sexe": "M",
+    "Sexe": "M ",
     "NomPere": "",
     "PrenomPere": "",
     "NomMere": "",
@@ -2281,7 +2281,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "23-07-1879",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2292,14 +2292,14 @@
     "Sexe": "F",
     "NomPere": "Moschowitch",
     "PrenomPere": "Israël",
-    "NomMere": "Benissovitch",
+    "NomMere": "Benissovitch ",
     "PrenomMere": "Victoria",
     "NomEpoux": "Fischer",
     "PrenomEpoux": "Léon",
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "19-03-1879",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2317,13 +2317,13 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
   {
     "Id": 129,
-    "NomMembre": "Vuillet",
+    "NomMembre": "Vuillet ",
     "PrenomMembre": "Pierre-",
     "Sexe": "M",
     "NomPere": "Vuillet",
@@ -2335,25 +2335,25 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
   {
     "Id": 130,
-    "NomMembre": "Caillat",
+    "NomMembre": "Caillat ",
     "PrenomMembre": "Suzanne",
     "Sexe": "F",
     "NomPere": "",
     "PrenomPere": "",
     "NomMere": "",
     "PrenomMere": "",
-    "NomEpoux": "Vuillet",
+    "NomEpoux": "Vuillet ",
     "PrenomEpoux": "Pierre-",
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2371,13 +2371,13 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
   {
     "Id": 132,
-    "NomMembre": "Umdenstock",
+    "NomMembre": "Umdenstock ",
     "PrenomMembre": "Louise",
     "Sexe": "F",
     "NomPere": "",
@@ -2389,7 +2389,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2407,13 +2407,13 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
   {
     "Id": 134,
-    "NomMembre": "Benissovitch",
+    "NomMembre": "Benissovitch ",
     "PrenomMembre": "Victoria",
     "Sexe": "F",
     "NomPere": "",
@@ -2425,7 +2425,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2443,7 +2443,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2461,7 +2461,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2479,7 +2479,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2497,7 +2497,7 @@
     "DateMariage": "",
     "DateDivorce": "",
     "DateNaissance": "",
-    "DateDeces": "",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2514,8 +2514,8 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
-    "DateDeces": "",
+    "DateNaissance": "21-01-1907",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2532,8 +2532,8 @@
     "PrenomEpoux": "Serge",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
-    "DateDeces": "",
+    "DateNaissance": "18-03-1923",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2550,8 +2550,8 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
-    "DateDeces": "",
+    "DateNaissance": "21-04-1914",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2568,8 +2568,8 @@
     "PrenomEpoux": "Jean-Daniel",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
-    "DateDeces": "",
+    "DateNaissance": "27-09-1918",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2586,8 +2586,8 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
-    "DateDeces": "",
+    "DateNaissance": "03-02-1918",
+    "DateDeces": "janv. 1, 1960",
     "LieuNaissance": "",
     "Photo": ""
   },
@@ -2622,7 +2622,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "11-04-1946",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2640,7 +2640,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "07-06-1949",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2658,7 +2658,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "28-06-1951",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2676,7 +2676,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "06-03-1955",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2694,7 +2694,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "12-05-1949",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2712,7 +2712,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "18-12-1950",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2730,7 +2730,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "24-12-1951",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2748,7 +2748,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "08-04-1953",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2766,7 +2766,7 @@
     "PrenomEpoux": "",
     "DateMariage": "",
     "DateDivorce": "",
-    "DateNaissance": "",
+    "DateNaissance": "03-03-1960",
     "DateDeces": "",
     "LieuNaissance": "",
     "Photo": ""
@@ -2843,4 +2843,4 @@
     "LieuNaissance": "",
     "Photo": ""
   }
-]
+ ]

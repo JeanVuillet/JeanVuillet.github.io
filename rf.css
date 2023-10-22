@@ -4,7 +4,7 @@ h1{
 
 main{
 display:flex;
-flex-direction: row;
+flex-direction: column;
 
 }
 
@@ -36,7 +36,7 @@ button{
 	background-color: lightgrey;
 	border-radius: 12px;
 	width: 300px;
-	height: 150px;
+	
 }
 .Tree membre img {
 	display: block;
