@@ -103,7 +103,7 @@ function TreeEnfants(id){
         for(let j=0;j<pere.length;j++)
         {
           AfficherMembre(pere[j].Id,"P");
-          AfficherMembre(mere[0].Id,"P");
+          AfficherMembre(mere[0].Id,"M");
 
           const Enfants= GetEnfant(pere[j].NomMembre,pere[j].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
     
@@ -149,7 +149,7 @@ function TreeEnfants(id){
           // créer les boutons parents enfants
 
           const bouton=document.createElement("button");
-          if(type=="P")
+          if(type=="P" || type=="M")
             {
             bouton.addEventListener("click", function(){TreeParents(id)});
             bouton.innerText="Parents";}
@@ -161,6 +161,7 @@ function TreeEnfants(id){
 
           
           // On rattache la balise membre a la section Famille
+          sectionFamille.appendChild(membreElement);
           sectionFamille.appendChild(membreElement);
           // On rattache les données à membreElement (la balise membre)
           membreElement.appendChild(imageElement);
@@ -191,7 +192,7 @@ function TreeParents(id){
     const pere=  GetByName(MembreCourant.NomPere,MembreCourant.PrenomPere)
     const mere= GetByName(MembreCourant.NomMere,MembreCourant.PrenomMere)
     AfficherMembre(pere[0].Id,"P");
-    AfficherMembre(mere[0].Id,"P");
+    AfficherMembre(mere[0].Id,"M");
 
     const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
     for(let i=0;i<Enfants.length;i++){
