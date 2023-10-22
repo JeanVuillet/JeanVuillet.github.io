@@ -4,11 +4,7 @@ h1{
 
 main{
 display:flex;
-<<<<<<< HEAD
-flex-direction: row;
-=======
 flex-direction: column;
->>>>>>> didier
 
 }
 
@@ -40,22 +36,14 @@ button{
 	background-color: lightgrey;
 	border-radius: 12px;
 	width: 300px;
-<<<<<<< HEAD
-	height: 150px;
-=======
 	
->>>>>>> didier
 }
 .Tree membre img {
 	display: block;
 	
 	margin-left: 20px;
 	width: 150px;
-<<<<<<< HEAD
-	object-fit: contain;
-=======
 	object-fit: cover;
->>>>>>> didier
 }
 .Tree membre containerElement {
 	width: 100px;
@@ -75,6 +63,8 @@ button{
 	text-align: center;
 	width: 60px;
 }  
+
+
 
 
 
