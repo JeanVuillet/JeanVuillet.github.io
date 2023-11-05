@@ -19,7 +19,7 @@ const membres = await reponse2.json();
      })
 
 const List=document.querySelector(".List");   
-// créer les boutons parents enfants
+// créer les boutons parents enfants  ok
 
 const UpParents=document.createElement("button");
 // UpParents.addEventListener("click", function (){TreeEnfants(Enfants[i].Id);});
