@@ -65,14 +65,13 @@ function TreeEnfants(id){
     let pere= new Array();
     
      let mere= new Array();
-  
     if(MembreCourant.Sexe=="M"){
         pere[0]=  MembreCourant;
    
-    if(MembreCourant.NomEpoux==""){
-    mere= GetConjoint(MembreCourant.NomMembre,MembreCourant.PrenomMembre);}
-   else{   mere= GetByName(MembreCourant.NomEpoux, MembreCourant.PrenomEpoux)}
-    }
+       if(MembreCourant.NomEpoux==""){
+              mere= GetConjoint(MembreCourant.NomMembre,MembreCourant.PrenomMembre);}
+        else{   mere= GetByName(MembreCourant.NomEpoux, MembreCourant.PrenomEpoux)}
+       }
     else{
         mere[0]=MembreCourant;
     
@@ -85,8 +84,9 @@ function TreeEnfants(id){
     {
       for(let j=0;j<mere.length;j++)
       {
+        AfficherInitFamille;
         AfficherMembre(pere[0].Id,"P");
-        AfficherMembre(mere[j].Id,"P");
+        AfficherMembre(mere[j].Id,"M");
     
 
         const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[j].NomMembre,mere[j].PrenomMembre);
@@ -118,11 +118,22 @@ function TreeEnfants(id){
 
       }
 
- }
+    }
    
-    //ajout des action listeners
+ function AfficherInitFamille(){
+    
+  // Récupération de l'élément du DOM qui accueillera la famille
+  const sectionFamille = document.querySelector(".Tree");
+  // Création d’une balise dédiée à un membre
+  const initelement = document.createElement("initfamille");
+  // Création des balises 
+  const initfamille= document.createElement("br");
+  // On rattache la balise membre a la section Famille
+  sectionFamille.appendChild(initelement);
+  // On rattache les données à membreElement (la balise membre)
+  membreElement.appendChild(initfamille);
+}
 
-    //boutonUp.addEventListener("click", TreeParent());
 
     function AfficherMembre(id,type){
     
@@ -156,45 +167,32 @@ function TreeEnfants(id){
             else
             {
               bouton.addEventListener("click", function(){TreeEnfants(id)});
-            bouton.innerText="Enfants";}
-            
-
-          
+            bouton.innerText="Enfants";}  
           // On rattache la balise membre a la section Famille
           sectionFamille.appendChild(membreElement);
-          sectionFamille.appendChild(membreElement);
+        
           // On rattache les données à membreElement (la balise membre)
           membreElement.appendChild(imageElement);
           membreElement.appendChild(containerElement);
           containerElement.appendChild(prenomnomElement);
           containerElement.appendChild(ddnElement);
           containerElement.appendChild(ageElement);
-          containerElement.appendChild(bouton);
-          
+          containerElement.appendChild(bouton);    
        }
   
-
-    
-
-
-
-
 function TreeParents(id){ 
 
   const Tree=document.querySelector(".Tree");
   Tree.innerHTML="";
 
      let MembreCourant= GetByID(id)[0];
-   
-
     if(MembreCourant.NomPere==""){alert("Le nom du père de "+MembreCourant.PrenomMembre+" n'est pas dans le fichier"); return false;}
     if(MembreCourant.NomMere==""){alert("Le nom de la mère de "+MembreCourant.PrenomMembre+" n'est pas dans le fichier"); return false;}
     const pere=  GetByName(MembreCourant.NomPere,MembreCourant.PrenomPere)
     const mere= GetByName(MembreCourant.NomMere,MembreCourant.PrenomMere)
     AfficherMembre(pere[0].Id,"P");
     AfficherMembre(mere[0].Id,"M");
-
-    const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
+   const Enfants= GetEnfant(pere[0].NomMembre,pere[0].PrenomMembre,mere[0].NomMembre,mere[0].PrenomMembre);
     for(let i=0;i<Enfants.length;i++){
       AfficherMembre(Enfants[i].Id,"E")
      }
