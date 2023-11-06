@@ -155,19 +155,36 @@ function TreeEnfants(id){
           ddnElement.innerText = membre[0].DateNaissance;
           const ageElement = document.createElement("h4");
           if(membre[0].DateDeces==""){
-          ageElement.innerText = CalculAge(membre[0].DateNaissance)+" ans";
+            if(membre[0].DateNaissance=="")
+            {
+              ageElement.innerText = "";
+            }
+            else 
+            {
+              ageElement.innerText = CalculAge(membre[0].DateNaissance)+" ans";
+            }
           }
-          // créer les boutons parents enfants
+          // créer les boutons parents lorsque le parent est présent dans le json
 
           const bouton=document.createElement("button");
           if(type=="P" || type=="M")
             {
-            bouton.addEventListener("click", function(){TreeParents(id)});
-            bouton.innerText="Parents";}
+              if(membre[0].NomPere!=""){
+               bouton.addEventListener("click", function(){TreeParents(id)});
+               bouton.innerText="Parents";
+              }
+            }
+            // créer les boutons enfants lorsque il y a des conjoints
             else
             {
-              bouton.addEventListener("click", function(){TreeEnfants(id)});
-            bouton.innerText="Enfants";}  
+             if(membre[0].NbEpoux!=0) 
+              {
+               bouton.addEventListener("click", function(){TreeEnfants(id)});
+               bouton.innerText="Enfants";
+              }
+              
+               
+             }
           // On rattache la balise membre a la section Famille
           sectionFamille.appendChild(membreElement);
         
