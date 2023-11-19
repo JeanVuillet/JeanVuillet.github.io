@@ -3,6 +3,54 @@
 const reponse2 = await fetch("rf.json");
 const membres = await reponse2.json();
 
+// afficher les anniversaires des 7 prochains jours
+// Déterminer les dates limites à selectionner ( Mois-jour)
+
+var anniversairesMin = Number;
+var anniversairesMax = Number;
+let dateObj = new Date();
+let month = String;
+let day = String;
+
+  month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  day = String(dateObj.getDate()).padStart(2, '0');
+  anniversairesMin=month+day;
+  dateObj.setDate(dateObj.getDate() + 10);
+  month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  day = String(dateObj.getDate()).padStart(2, '0');
+  anniversairesMax=month+day;
+
+// selectionner les personnes et les ranges dans un tableau 
+let anniversaires = [];
+
+let naissancemmjj = Number;
+
+let j=0;
+for (let i=0; i< membres.length; i++){
+ 
+naissancemmjj=membres[i].DateNaissance.substr(3,2)+membres[i].DateNaissance.substr(0,2);
+if(membres[i].DateDeces=="")
+  {
+    if(naissancemmjj>=anniversairesMin && naissancemmjj<=anniversairesMax) 
+    {
+      anniversaires[j]=naissancemmjj+" "+membres[i].Id;
+      j++;
+    }
+  } 
+}
+// trier les membres selectionnés avec anniversaires
+  
+anniversaires.sort();
+
+
+
+// Afficher les anniversaires des prochains jours
+
+
+for (let i=0;i<anniversaires.length;i++){
+AfficherAnniversaire(anniversaires[i].substring(5));
+}
+
  //trier la liste membres
 
  membres.sort(function compare (a,b){
@@ -197,6 +245,35 @@ function TreeEnfants(id){
           containerElement.appendChild(bouton);    
        }
   
+       function AfficherAnniversaire(id){
+    
+        
+        const membre = GetByID(id);
+        // Récupération de l'élément du DOM qui accueillera la famille
+        const sectionFamille = document.querySelector(".anniv");
+        // Création d’une balise dédiée à un membre
+        const membreElement = document.createElement("membreanniv");
+        // Création des balises 
+        const imageElement = document.createElement("img");
+        imageElement.src ="photos/"+NoAccent(membre[0].PrenomMembre)+NoAccent(membre[0].NomMembre)+".jpeg"
+        imageElement.alt="pas de photo";
+        const containerElement = document.createElement("div");
+        containerElement.className="containerElement";
+        const prenomnomElement = document.createElement("h4");
+        prenomnomElement.innerText = membre[0].PrenomMembre+" "+membre[0].NomMembre;
+        const ddnElement = document.createElement("h4");
+        ddnElement.innerText = membre[0].DateNaissance.substr(0,5);
+    
+        // On rattache la balise membre a la section Famille
+        sectionFamille.appendChild(membreElement);
+      
+        // On rattache les données à membreElement (la balise membre)
+        membreElement.appendChild(imageElement);
+        membreElement.appendChild(containerElement);
+        containerElement.appendChild(prenomnomElement);
+        containerElement.appendChild(ddnElement);
+           
+     }
 function TreeParents(id){ 
 
   const Tree=document.querySelector(".Tree");
