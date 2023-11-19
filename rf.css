@@ -23,10 +23,10 @@ button{
 }  
 .anniv{
 	flex: 1;
-	margin: 8px;
+	margin: 4px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 4px;
+	gap: 2px;
 	
 }
 .anniv membreanniv {
@@ -98,10 +98,7 @@ button{
 		flex-direction: column;
 		
 	}
-	.anniv{
-		grid-template-columns:none;
-		flex-direction: column;
-	}
+	
 	
 }
 
