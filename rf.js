@@ -247,7 +247,7 @@ function TreeEnfants(id){
   
        function AfficherAnniversaire(id){
     
-        
+        var indicemois=Number;
         const membre = GetByID(id);
         // Récupération de l'élément du DOM qui accueillera la famille
         const sectionFamille = document.querySelector(".anniv");
@@ -262,7 +262,9 @@ function TreeEnfants(id){
         const prenomnomElement = document.createElement("h4");
         prenomnomElement.innerText = membre[0].PrenomMembre+" "+membre[0].NomMembre;
         const ddnElement = document.createElement("h4");
-        ddnElement.innerText = membre[0].DateNaissance.substr(0,5);
+        const listemois=["Jan","Fev","Mar","Avr","Mai","Juin","Jui","Août","Sep","Oct","Nov","Dec"];
+        indicemois=membre[0].DateNaissance.substr(3,2)-1;
+        ddnElement.innerText = membre[0].DateNaissance.substr(0,2)+" "+listemois[indicemois];
     
         // On rattache la balise membre a la section Famille
         sectionFamille.appendChild(membreElement);
