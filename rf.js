@@ -202,7 +202,15 @@ function TreeEnfants(id){
           const ddnElement = document.createElement("h4");
           ddnElement.innerText = membre[0].DateNaissance;
           const ldnElement = document.createElement("h4");
-          ldnElement.innerText = membre[0].LieuNaissance;
+          if(membre[0].Sexe=="M")
+            {
+            ldnElement.innerText = "Né à "+membre[0].LieuNaissance;
+            }
+            else 
+            {
+              ldnElement.innerText = "Née à "+membre[0].LieuNaissance;
+            }
+
           const ageElement = document.createElement("h4");
           if(membre[0].DateDeces==""){
             if(membre[0].DateNaissance=="")
