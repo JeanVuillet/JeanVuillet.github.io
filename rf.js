@@ -201,6 +201,8 @@ function TreeEnfants(id){
           prenomnomElement.innerText = membre[0].PrenomMembre+" "+membre[0].NomMembre;
           const ddnElement = document.createElement("h4");
           ddnElement.innerText = membre[0].DateNaissance;
+          const ldnElement = document.createElement("h4");
+          ldnElement.innerText = membre[0].LieuNaissance;
           const ageElement = document.createElement("h4");
           if(membre[0].DateDeces==""){
             if(membre[0].DateNaissance=="")
@@ -241,6 +243,7 @@ function TreeEnfants(id){
           membreElement.appendChild(containerElement);
           containerElement.appendChild(prenomnomElement);
           containerElement.appendChild(ddnElement);
+          containerElement.appendChild(ldnElement);
           containerElement.appendChild(ageElement);
           containerElement.appendChild(bouton);    
        }
