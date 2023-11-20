@@ -268,7 +268,17 @@ function TreeEnfants(id){
         const listemois=["Jan","Fev","Mar","Avr","Mai","Juin","Jui","Août","Sep","Oct","Nov","Dec"];
         indicemois=membre[0].DateNaissance.substr(3,2)-1;
         ddnElement.innerText = membre[0].DateNaissance.substr(0,2)+" "+listemois[indicemois];
-    
+        const ageElement = document.createElement("h4");
+        if(membre[0].DateDeces==""){
+          if(membre[0].DateNaissance=="")
+          {
+            ageElement.innerText = "";
+          }
+          else 
+          {
+            ageElement.innerText = (CalculAge(membre[0].DateNaissance)+1)+" ans";
+          }
+        }
         // On rattache la balise membre a la section Famille
         sectionFamille.appendChild(membreElement);
       
@@ -277,6 +287,7 @@ function TreeEnfants(id){
         membreElement.appendChild(containerElement);
         containerElement.appendChild(prenomnomElement);
         containerElement.appendChild(ddnElement);
+        containerElement.appendChild(ageElement);
            
      }
 function TreeParents(id){ 
