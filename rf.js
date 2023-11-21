@@ -257,7 +257,7 @@ function TreeEnfants(id){
        }
   
        function AfficherAnniversaire(id){
-    
+        const today = new Date();
         var indicemois=Number;
         const membre = GetByID(id);
         // Récupération de l'élément du DOM qui accueillera la famille
@@ -284,7 +284,12 @@ function TreeEnfants(id){
           }
           else 
           {
+            if(membre[0].DateNaissance.substr(0,2)==today.getDate()){
+              ageElement.innerText = (CalculAge(membre[0].DateNaissance))+" ans";
+            }
+            else {
             ageElement.innerText = (CalculAge(membre[0].DateNaissance)+1)+" ans";
+            }
           }
         }
         // On rattache la balise membre a la section Famille
