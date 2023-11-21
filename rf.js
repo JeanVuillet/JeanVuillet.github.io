@@ -75,7 +75,7 @@ UpParents.addEventListener("click", function(){TreeParents(document.getElementBy
 UpParents.innerText="Parents";
 const DownEnfants=document.createElement("button");
 DownEnfants.addEventListener("click", function (){TreeEnfants(document.getElementById("membre").value)});
-DownEnfants.innerText="Enfants";
+DownEnfants.innerText="Conjoint-Enfants";
 
 // Saisie du choix du membre avec une liste déroulante
 
@@ -219,7 +219,7 @@ function TreeEnfants(id){
             }
             else 
             {
-              ageElement.innerText = CalculAge(membre[0].DateNaissance)+" ans";
+              ageElement.innerText = CalculAgeBebeAussi(membre[0].DateNaissance);
             }
           }
           // créer les boutons parents lorsque le parent est présent dans le json
@@ -238,7 +238,7 @@ function TreeEnfants(id){
              if(membre[0].NbEpoux!=0) 
               {
                bouton.addEventListener("click", function(){TreeEnfants(id)});
-               bouton.innerText="Enfants";
+               bouton.innerText="Conjoint-Enfants";
               }
               
                
@@ -371,6 +371,53 @@ function GetByID(id){
      Age--;}
      return Age;
                      }
+    function CalculAgemois(DateNaissance){
+    var ladate=new Date();
+    var datedujour= new String;
+    datedujour=ladate.toLocaleDateString();
+  
+    var moistoday= new Number;
+    var jourtoday= new Number;
+    moistoday=parseInt(datedujour.substring(3,5));
+    jourtoday=parseInt(datedujour.substring(0,2));
+  
+    // on isole le jour et le mois de naissance
+
+      var moisnaissance=new Number;
+      var journaissance=new Number;
+      moisnaissance= parseInt(DateNaissance.substr(3,2));
+      journaissance= parseInt(DateNaissance.substr(0,2));
+
+      // si le mois de naissance est supérieur au mois du jour, on ajout 12 au mois du jour
+      if(moisnaissance>moistoday)
+        {moistoday=moistoday+12;
+        }
+      // on calcule le nb de mois de différence
+      var AgeMois= moistoday-moisnaissance;
+      // if faut diminuer de 1 mois si le jour d'aujourd'hui est inférieur au jour de naissance
+      if(moistoday<journaissance){
+      AgeMois--;}
+      return AgeMois;
+    }
+
+      function CalculAgeBebeAussi(DateNaissance)
+      {
+      
+        var ladate=new Date();
+        var datedujour= new String;
+        var age = Number;
+        datedujour=ladate.toLocaleDateString();
+        age = CalculAge(DateNaissance);
+       
+        if(age==0){
+          return CalculAgemois(DateNaissance)+" mois";
+
+        }
+        else
+        {
+          return age+" ans";
+        }
+      }
 
 function NoAccent(a) {
   var b="áàâäãåçéèêëíïîìñóòôöõúùûüýÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ",
