@@ -150,6 +150,7 @@ function TreeEnfants(id){
       {
         for(let j=0;j<pere.length;j++)
         {
+          AfficherInitFamille;
           AfficherMembre(pere[j].Id,"P");
           AfficherMembre(mere[0].Id,"M");
 
@@ -179,7 +180,7 @@ function TreeEnfants(id){
   // On rattache la balise membre a la section Famille
   sectionFamille.appendChild(initelement);
   // On rattache les données à membreElement (la balise membre)
-  membreElement.appendChild(initfamille);
+  initelement.appendChild(initfamille);
 }
 
 
@@ -358,6 +359,7 @@ function GetByID(id){
     return list2;
                     }
  function CalculAge(DateNaissance){
+  // calcule l'age en années
     var ladate=new Date();
     var datedujour= new String;
     datedujour=ladate.toLocaleDateString();
@@ -372,6 +374,7 @@ function GetByID(id){
      return Age;
                      }
     function CalculAgemois(DateNaissance){
+    // calcule l'age en mois pour des bebes de moins d'un an
     var ladate=new Date();
     var datedujour= new String;
     datedujour=ladate.toLocaleDateString();
@@ -401,6 +404,7 @@ function GetByID(id){
     }
 
       function CalculAgeBebeAussi(DateNaissance)
+      // calcule l'age  et si moins d'un an appelle CalculAgemois pour obtenir l'age en mois
       {
       
         var ladate=new Date();
